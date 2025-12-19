@@ -5,7 +5,16 @@ return {
     opts = require "configs.conform",
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
+  { 
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      system_open = {
+        cmd = "open",
+        args = { "-R" },
+      },
+    },
+  },
+  
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -13,16 +22,36 @@ return {
     end,
   },
 
+  -- https://github.com/nvim-mini/mini.align
+  { "nvim-mini/mini.align",
+    version = "*",
+    init = function()
+      require('mini.align').setup()
+    end,
+  },
+
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+  {
+    "nvim-treesitter/nvim-treesitter",
+      opts = {
+        ensure_installed = {
+          "c",
+          "css",
+          "haskell",
+          "html",
+          "javascript",
+          "lua",
+          "markdown",
+          "markdown_inline",
+          "ruby",
+          "swift",
+          "typescript",
+          "tsx",
+          "vim",
+          "vimdoc"
+        },
+    },
+  },
 }
