@@ -9,14 +9,32 @@ M.base46 = {
 	theme = "catppuccin",
 }
 
--- local function run_make()
---   vim.cmd[[silent make]]
---   if #(vim.fn.getqflist()) > 0 then
--- 	  vim.cmd.copen()
---   else
--- 	  vim.cmd.cclose()
---   end
--- end
+local function run_make()
+  vim.cmd[[silent make]]
+  if #(vim.fn.getqflist()) > 0 then
+    vim.cmd.copen()
+  else
+    vim.cmd.cclose()
+  end
+end
+
+vim.api.nvim_create_user_command(
+  'XcodeBuild',
+  function()
+    vim.opt_local.makeprg = "just quickfixlist"
+    vim.opt_local.errorformat = {
+      "%f:%l:%c: %trror: %m"
+    }
+    run_make()
+  end,
+  {
+    desc = "Run xcodebuild and display results in quickfixlist"
+  }
+)
+
+-- Quickfixlist
+vim.cmd("packadd cfilter")
+
 --
 -- vim.api.nvim_create_user_command(
 --   'Periphery',
