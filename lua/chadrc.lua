@@ -24,6 +24,7 @@ vim.api.nvim_create_user_command(
     vim.opt_local.makeprg = "just quickfixlist"
     vim.opt_local.errorformat = {
       "%f:%l:%c: %trror: %m"
+      -- "%f:%l:%c: %tarning: %m"
     }
     run_make()
   end,
@@ -34,20 +35,5 @@ vim.api.nvim_create_user_command(
 
 -- Quickfixlist
 vim.cmd("packadd cfilter")
-
---
--- vim.api.nvim_create_user_command(
---   'Periphery',
---   function()
---     vim.opt_local.makeprg = "periphery scan"
---     vim.opt_local.errorformat = {
---       "%f:%l:%c: %tarning: %m"
---     }
---     run_make()
---   end,
---   {
---     desc = "Run periphery and display results in quickfixlist"
---   }
--- )
 
 return M

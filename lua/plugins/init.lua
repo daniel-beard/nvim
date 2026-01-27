@@ -1,12 +1,10 @@
 return {
-  {
-    "stevearc/conform.nvim",
+  { "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
 
-  { 
-    "nvim-tree/nvim-tree.lua",
+  { "nvim-tree/nvim-tree.lua",
     opts = {
       system_open = {
         cmd = "open",
@@ -15,8 +13,7 @@ return {
     },
   },
   
-  {
-    "neovim/nvim-lspconfig",
+  { "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
     end,
@@ -30,11 +27,16 @@ return {
     end,
   },
 
-  -- test new blink
-  -- { import = "nvchad.blink.lazyspec" },
 
-  {
-    "nvim-treesitter/nvim-treesitter",
+  { "https://codeberg.org/andyg/leap.nvim",
+    dependencies = { "tpope/vim-repeat" },
+    lazy = false,
+    init = function() 
+      require('configs.leap').setup()
+    end,
+  },
+
+  { "nvim-treesitter/nvim-treesitter",
       opts = {
         ensure_installed = {
           "c",

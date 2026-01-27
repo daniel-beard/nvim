@@ -1,7 +1,5 @@
 require "nvchad.mappings"
 
--- add yours here
-
 local map = vim.keymap.set
 local term = require("nvchad.term")
 
@@ -13,7 +11,9 @@ map("n", "]q", "<cmd> cnext <CR>", { desc = "Next quickfixlist entry" })
 
 map("i", "jk", "<ESC>")
 
+-- Change indent while keeping selection
 map("v", ">", ">gv", { desc = "Indent" })
+map("v", "<", "<gv", { desc = "De-Indent" })
 
 -- Terminal
 map("n", "<leader>st", function()
