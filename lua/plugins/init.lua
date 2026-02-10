@@ -10,6 +10,10 @@ return {
         cmd = "open",
         args = { "-R" },
       },
+      git = {
+        -- Show the ignored git files by default
+        ignore = false,
+      },
     },
   },
   
@@ -27,13 +31,28 @@ return {
     end,
   },
 
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    cmd = "Telescope",
+    opts = function()
+      return require "configs.telescope"
+    end,
+  },
+
 
   { "https://codeberg.org/andyg/leap.nvim",
-    dependencies = { "tpope/vim-repeat" },
+    -- dependencies = { "tpope/vim-repeat" },
     lazy = false,
     init = function() 
       require('configs.leap').setup()
     end,
+  },
+
+  -- https://github.com/tpope/vim-dispatch
+  { "tpope/vim-dispatch",
+    lazy = true,
+    cmd = {'Dispatch', 'Make', 'Focus', 'Start'},
   },
 
   { "nvim-treesitter/nvim-treesitter",

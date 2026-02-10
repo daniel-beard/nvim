@@ -16,6 +16,7 @@ return {
     end)
     -- Use the traversal keys to repeat the previous motion without
     -- explicitly invoking Leap:
-    require('leap.user').set_repeat_keys('<enter>', '<backspace>')
+    -- TODO: This breaks enter navigating to a quickfixlist entry. Probably don't need it at all.
+    -- require('leap.user').set_repeat_keys('<enter>', '<backspace>')
   end,
 }
