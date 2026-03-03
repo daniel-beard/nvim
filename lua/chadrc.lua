@@ -9,6 +9,17 @@ M.base46 = {
 	theme = "catppuccin",
 }
 
+M.term = {
+	float = {
+		relative = "editor",
+		row = 0.05,
+		col = 0.05,
+		width = 0.9,
+		height = 0.85,
+		border = "single",
+	},
+}
+
 local function run_make()
   vim.cmd[[silent make]]
   if #(vim.fn.getqflist()) > 0 then
