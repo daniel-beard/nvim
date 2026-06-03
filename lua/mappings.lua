@@ -10,6 +10,10 @@ map("n", "[q", "<cmd> cprev <CR>", { desc = "Previous quickfixlist entry" })
 map("n", "]q", "<cmd> cnext <CR>", { desc = "Next quickfixlist entry" })
 
 map("i", "jk", "<ESC>")
+map("n", "<leader>q", function() 
+  local is_readonly = vim.opt.readonly:get()
+  if is_readonly then vim.cmd("qa") end
+end, { desc = "Exit a file in readonly mode" })
 
 -- Change indent while keeping selection
 map("v", ">", ">gv", { desc = "Indent" })
@@ -28,3 +32,9 @@ map("v", "<leader>gs", function()
   require('telescope.builtin').grep_string()
 end, { desc = "Search for currently selected text" }
 )
+
+-- Toggle invisibles
+map("n", "<leader>l", function()
+  vim.opt.list = not vim.opt.list:get()
+  vim.cmd "NonAsciiToggle"
+end, { desc = "Toggle invisibles" })

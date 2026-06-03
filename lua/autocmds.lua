@@ -2,6 +2,14 @@ require "nvchad.autocmds"
 
 local autocmd = vim.api.nvim_create_autocmd
 
+-- Highlight non-ASCII characters (toggle with :NonAsciiToggle)
+local nonascii = require "configs.nonascii"
+
+autocmd({ "BufWinEnter", "WinEnter" }, {
+  pattern = "*",
+  callback = nonascii.on_win_enter,
+})
+
 autocmd("BufReadPost", {
   pattern = "*",
   callback = function()

@@ -16,7 +16,7 @@ return {
       },
     },
   },
-  
+
   { "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
@@ -53,6 +53,23 @@ return {
   { "tpope/vim-dispatch",
     lazy = true,
     cmd = {'Dispatch', 'Make', 'Focus', 'Start'},
+  },
+
+  { "vimwiki/vimwiki",
+  -- The event that triggers the plugin
+  event = "BufEnter *.md",
+  -- The keys that trigger the plugin
+  keys = { "<leader>ww", "<leader>wt" },
+  -- The configuration for the plugin
+  init = function()
+    vim.g.vimwiki_list = {
+      {
+        path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/",
+        syntax = "markdown",
+        ext = "md",
+      },
+    }
+  end,
   },
 
   { "nvim-treesitter/nvim-treesitter",
